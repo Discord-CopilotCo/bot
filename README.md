@@ -1,4 +1,4 @@
-![image](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Microsoft_365_Copilot_Icon.svg/480px-Microsoft_365_Copilot_Icon.svg.png)
+![image](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Microsoft_365_Copilot_Icon.svg/240px-Microsoft_365_Copilot_Icon.svg.png)
 # Microsoft Copilot is now on Discord! 🤖
 ## How to use:
 1. Make an application
