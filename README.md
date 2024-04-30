@@ -1,4 +1,4 @@
-![image](https://github.com/AndroidRetro/Copilot_Discord-BOT/assets/154600041/f65d9ae9-acb9-46d6-b79b-24c9ed2cfb6a)
+![image](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Microsoft_365_Copilot_Icon.svg/480px-Microsoft_365_Copilot_Icon.svg.png)
 # Microsoft Copilot is now on Discord! 🤖
 ## How to use:
 1. Make an application
