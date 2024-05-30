@@ -24,7 +24,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
   if client.user.mention in message.content.split():
-    print (message.content)
+   # print (message.content)
     bot = None
     try:
         cookies = json.loads(open(
@@ -41,9 +41,9 @@ async def on_message(message):
             simplify_response=True
         )
         nonparsed = json.dumps(response_bing, indent=2, ensure_ascii=False)
-        print(nonparsed)
+       # print(nonparsed)
         parsed_done = json.loads(nonparsed)
-        print(parsed_done)
+       # print(parsed_done)
         await message.channel.send(parsed_done["text"])
     except Exception as error:
         raise error
