@@ -4,7 +4,7 @@
 1. Make an application
 2. Get your discord bot token.
 3. Rename the hidden file ".env.example" to ".env"
-4. Open it with an editor, and place your token right after `DISCORD_TOKEN=`.
+4. Open it with an editor, write `DISCORD_TOKEN=` and place your token right after `DISCORD_TOKEN=`, then save the file..
 5. Install the cookie editor extension for [Chrome](https://chrome.google.com/webstore/detail/cookie-editor/hlkenndednhfkekhgcdicdfddnkalmdm) or [Firefox](https://addons.mozilla.org/en-US/firefox/addon/cookie-editor/)
 6. Go to https://copilot.microsoft.com/
 7. Open the extension
