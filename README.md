@@ -13,7 +13,7 @@
    - NOTE: The **cookies file name MUST follow the regex pattern `bing_cookies.json`**, so that they could be recognized by internal cookie processing mechanisms
 10. Finally, place your own UserID in main.py at line 15, so it would look like this: `staff = ['youruserid']`. You can add even more staff members: `staff = [member1userid, member2userid, youruserid]`
 11. Install dependencies: `python3 -m pip install -r requirements.txt`
-12. Run the bot: `python3 chat_dsc.py`
+12. Run the bot: `python3 main.py`
 
 To see statistics, use "cp!stats"
 ### Enjoy your all time favorite AI 👑
