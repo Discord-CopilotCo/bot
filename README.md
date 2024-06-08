@@ -17,4 +17,5 @@
 
 To see statistics, use "cp!stats"
 ### Enjoy your all time favorite AI 👑
+If it doesn't works, join our support server at https://discord.com/invite/M2FhPZyq
 # _**NOTE: THIS IS NOT A OFFICIAL MICROSOFT PRODUCT**_
