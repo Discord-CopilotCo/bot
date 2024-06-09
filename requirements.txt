@@ -1,4 +1,4 @@
 asyncio
-guilded.py
+python-dotenv
 re-edge-gpt
-prodiapy
+nextcord
