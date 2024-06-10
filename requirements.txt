@@ -1,4 +1,4 @@
 asyncio
 python-dotenv
-re-edge-gpt
+re-edge-gpt==0.0.40
 nextcord
