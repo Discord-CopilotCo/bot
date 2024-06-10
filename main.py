@@ -8,6 +8,7 @@ from re_edge_gpt import Chatbot
 from re_edge_gpt import ConversationStyle
 from dotenv import load_dotenv
 import os
+from re_edge_gpt import ImageGen
 intents = discord.Intents.default()
 intents.message_content = True
 intents = discord.Intents.default()
@@ -52,6 +53,27 @@ async def on_message(message):
           chats = chats+1
           chat_log = float(chats)
           await message.channel.send(parsed_done["text"])
+          if re.search(r"ll ?try ?to ?create ?that", parsed_done["text"]):
+            async with message.channel.typing():
+              piccookie = ""
+              for cookie in cookies:
+                  if cookie["name"] == "_U":
+                      piccookie =  cookie["value"]
+                      break
+              sync_gen = ImageGen(auth_cookie=piccookie, quiet=True)
+              image = sync_gen.get_images(prompt=message.content)
+              sync_gen.save_images(image, "images")
+              images = []
+              for image in os.listdir("images")[:1]:
+                  img = f = os.path.join("images", image)
+                  if os.path.isfile(img):
+                      images.append(discord.File(img, filename="image.jpeg"))
+              embed = discord.Embed()
+              embed.set_image(url="attachment://image.jpeg")
+              await message.channel.send(files=images, embed=embed)
+              for image in os.listdir("images"):
+                  img = f = os.path.join("images", image)
+                  os.remove(img)
       except Exception as error:
           raise error
           await message.channel.send(f"Oops, an error occured! Please contact the owner at <@{client.owner_id}>")
