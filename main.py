@@ -88,7 +88,7 @@ async def on_message(message):
           global chats
           chats = chats+1
           chat_log = float(chats)
-          await message.channel.send(actualtext)
+          await message.channel.send(actualtext, reference=message)
           if re.search(r"ll ?try ?to ?create ?that", parsed_done["text"]):
             async with message.channel.typing():
               piccookie = ""
@@ -106,7 +106,7 @@ async def on_message(message):
                       images.append(discord.File(img, filename="image.jpeg"))
               embed = discord.Embed()
               embed.set_image(url="attachment://image.jpeg")
-              await message.channel.send(files=images, embed=embed)
+              await message.channel.send(files=images, embed=embed, reference=message)
               for image in os.listdir("images"):
                   img = f = os.path.join("images", image)
                   os.remove(img)
