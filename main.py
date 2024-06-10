@@ -13,7 +13,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 intents = discord.Intents.default()
 intents.message_content = True
-staff = ['''placeyouruseridhere''', '''placeyourstaffmember'suseridhere''', 1213799919920484364]
+staff = ['''placeyouruseridhere''', '''placeyourstaffmember'suseridhere''']
 client = discord.Client(intents=intents)
 chats  =  0
 bugreports = 0
