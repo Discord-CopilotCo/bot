@@ -18,10 +18,16 @@ To see statistics, use "cp!stats"
 ### Enjoy your all time favorite AI 👑⁴
 If it doesn't works, join our support server at https://discord.com/invite/M2FhPZyq
 # _**NOTE: THIS IS NOT A OFFICIAL MICROSOFT PRODUCT**_
-# \_________________________________________________________________________________________
+# 
+<br>
 ¹ Make sure to enable ALL intents.
+<br>
 ² Need help grabbing your userID? https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID
+<br>
 ³ This is being used for staff commands, like "cp!stats". If you want to add staff members, use /addstaff⁶.
+<br>
 ⁴ How to use the bot: @mentions, replies, or use the /chathere command in a dedicated `#copilot` channel⁵.
+<br>
 ⁵ Would you like to unset the channel? Use /unset.
+<br>
 ⁶ Would you like to demote a member? Use /removestaff.
