@@ -1,46 +1,53 @@
 import asyncio
 import nextcord as discord
-from nextcord.ext import *
 import json
-from pathlib import Path
 import re
-from re_edge_gpt import Chatbot
-from re_edge_gpt import ConversationStyle
-from dotenv import load_dotenv
 import os
-from re_edge_gpt import ImageGen
+from dotenv import load_dotenv
+from nextcord.ext import *
+from pathlib import Path
+from re_edge_gpt import Chatbot, ConversationStyle, ImageGen
+from re_edge_gpt import ConversationStyle
 intents = discord.Intents.default()
 intents.message_content = True
-intents = discord.Intents.default()
-intents.message_content = True
-staff = []
 client = discord.Client(intents=intents)
 chats  =  0
 bugreports = 0
 load_dotenv()
 chat_log = float(chats)
 channels = []
+staff = []
 owner = os.getenv("BOT_OWNER")
-if not os.path.isfile("channels.json"):
-   with open("channels.json", 'w') as channelsfile:
+
+def updatechannelsjson():
+  with open("channels.json", 'w') as channelsfile:
        json.dump(channels, channelsfile, indent=2)
-       print("Created channels.json")
-else:
-   with open("channels.json", 'r') as channelsfile:
+       print("Updated channels.json")
+def openchannelsjson():
+  with open("channels.json", 'r') as channelsfile:
        channels = json.load(channelsfile)
        print("Loaded channels.json")
-if not os.path.isfile("staff.json"):
-   with open("staff.json", 'w') as stafffile:
+def updatestaffjson():
+  with open("staff.json", 'w') as stafffile:
        if not owner in staff:
          staff.append(owner)
        json.dump(staff, stafffile, indent=2)
-       print("Created staff.json")
-else:
-   with open("staff.json", 'r') as stafffile:
+       print("Updated staff.json")
+def openstaffjson():
+  with open("staff.json", 'r') as stafffile:
        if not owner in staff:
          staff.append(owner)
        staff = json.load(stafffile)
-       print("Loaded staff.json")
+       print("Loaded staff.json") 
+            
+if not os.path.isfile("channels.json"):
+   updatechannelsjson()
+else:
+   openchannelsjson()
+if not os.path.isfile("staff.json"):
+   updatestaffjson()
+else:
+   openstaffjson()
 @client.event
 async def on_ready():
     print(f'We have logged in as {client.user}!')
@@ -126,9 +133,7 @@ async def chathere(interaction: discord.Interaction):
   global channels
   if not interaction.channel.id in channels:
     channels.append(interaction.channel.id)
-    with open("channels.json", 'w') as channelsfile:
-        json.dump(channels, channelsfile, indent=2)
-        print("Updated channels.json")
+    updatechannelsjson()
     await interaction.response.send_message("Channel set successfully! Have fun! \;-)")
   else:
     await interaction.response.send_message(f"Oops, this channel is set already! If it doesn't works, contact the support team or DM <@{owner}>")
@@ -137,11 +142,7 @@ async def addstaff(interaction: discord.Interaction, user: discord.Member):
   if str(owner) in str(interaction.user.id):
    if not user.id in staff:
      staff.append(user.id)
-     with open("staff.json", 'w') as stafffile:
-         if not owner in staff:
-           staff.append(owner)
-         json.dump(staff, stafffile, indent=2)
-         print("Updated staff.json")
+     updatestaffjson()
      await interaction.response.send_message(f"Welcome, {user.mention}, to the Copilot staff team!")
    else:
      await interaction.response.send_message(f"User is staff already.")
@@ -151,9 +152,7 @@ async def addstaff(interaction: discord.Interaction, user: discord.Member):
 async def unset(interaction: discord.Interaction):
   if interaction.channel.id in channels:
     channels.remove(interaction.channel.id)
-    with open("channels.json", 'w') as channelsfile:
-        json.dump(channels, channelsfile, indent=2)
-        print("Updated channels.json")
+    updatechannelsjson()
     await interaction.response.send_message("Unset.")
   else:
     await interaction.response.send_message("This channel is not set.")
@@ -162,11 +161,7 @@ async def removestaff(interaction: discord.Interaction, user: discord.Member):
   if str(owner) in str(interaction.user.id):
    if user.id in staff:
      staff.remove(user.id)
-     with open("staff.json", 'w') as stafffile:
-         if not owner in staff:
-           staff.append(owner)
-         json.dump(staff, stafffile, indent=2)
-         print("Updated staff.json")
+     updatestaffjson()
      await interaction.response.send_message(f"Staff removed from {user.mention}.")
    else:
      await interaction.response.send_message(f"User is not staff.")
