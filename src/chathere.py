@@ -5,7 +5,7 @@ async def chathere(interaction: discord.Interaction):
         channels.append(interaction.channel.id)
         updatechannelsjson()
         await interaction.response.send_message(
-            "Channel set successfully! Have fun! \\;-)"
+            "Channel set successfully! Have fun! \;-)"
         )
     else:
         await interaction.response.send_message(
