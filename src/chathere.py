@@ -1,11 +1,11 @@
 @client.slash_command(description="Set this channel for the bot to talk here :)")
 async def chathere(interaction: discord.Interaction):
     global channels
-    if not interaction.channel.id in channels:
+    if interaction.channel.id not in channels:
         channels.append(interaction.channel.id)
         updatechannelsjson()
         await interaction.response.send_message(
-            "Channel set successfully! Have fun! \;-)"
+            "Channel set successfully! Have fun! \\;-)"
         )
     else:
         await interaction.response.send_message(

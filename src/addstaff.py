@@ -1,7 +1,7 @@
 @client.slash_command(description="OWNER-ONLY: Make a user staff")
 async def addstaff(interaction: discord.Interaction, user: discord.Member):
     if str(owner) in str(interaction.user.id):
-        if not user.id in staff:
+        if user.id not in staff:
             staff.append(user.id)
             updatestaffjson()
             await interaction.response.send_message(
