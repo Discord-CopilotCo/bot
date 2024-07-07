@@ -1,3 +1,4 @@
+from textwrap import wrap
 @client.event
 async def on_message(message):
     if message.content.startswith("cp!stats"):
@@ -27,7 +28,7 @@ async def on_message(message):
             )
             print(f"User {message.author.id} attempted using a owner-only command.")
     if client.user in message.mentions or message.channel.id in channels:
-        if not message.author.bot:
+        if not message.author.bot and not message.content.startswith('//'):
             async with message.channel.typing():
                 bot = None
                 try:
@@ -62,7 +63,20 @@ async def on_message(message):
                     global chats
                     chats = chats + 1
                     chat_log = float(chats)
-                    await message.channel.send(actualtext, reference=message)
+                    actualtext = str(actualtext)
+                    if len(actualtext) > 1999:
+                        try:
+                            actualtext = actualtext.split('"]')[0]
+                        except:
+                            pass
+                        split = wrap(str(actualtext), 1999)
+                        for msg in split:
+                            print(msg)
+                            msg = re.sub("\[\^\d\^\]", "", msg)
+                            await message.channel.send(msg)
+                    elif len(actualtext) < 1999:
+                        actualtext = re.sub("\[\^\d\^\]", "", actualtext)
+                        await message.channel.send(actualtext, reference=message)
                     if re.search(r"ll ?try ?to ?create ?that", parsed_done["text"]):
                         async with message.channel.typing():
                             piccookie = ""
