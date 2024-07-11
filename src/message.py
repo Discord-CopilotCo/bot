@@ -70,10 +70,7 @@ async def on_message(message):
                         except:
                             pass
                         split = wrap(str(actualtext), 1999)
-                        for msg in split:
-                            print(msg)
-                            msg = re.sub("\[\^\d\^\]", "", msg)
-                            await message.channel.send(msg)
+                        message.channel.send(split[0], reference=message)
                     elif len(actualtext) < 1999:
                         actualtext = re.sub("\[\^\d\^\]", "", actualtext)
                         await message.channel.send(actualtext, reference=message)
