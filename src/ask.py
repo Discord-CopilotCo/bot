@@ -1,6 +1,4 @@
-@client.slash_command(description="Ask copilot a question")
-@app_commands.allowed_installs(guilds=False, users=True)
-@app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
+@client.slash_command(description="Ask copilot a question", dm_permission=True)
 async def ask(interaction: nextcord.Interaction, prompt: str):
     cookies = json.loads(
         open(f"{Path.cwd()}/bing_cookies.json", encoding="utf-8").read()
