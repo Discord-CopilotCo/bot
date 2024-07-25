@@ -8,7 +8,7 @@ import re
 import os
 from pathlib import Path
 import nextcord
-from nextcord import app_commands
+from discord import app_commands
 from nextcord.ext import *
 from re_edge_gpt import Chatbot, ConversationStyle, ImageGen
 from dotenv import load_dotenv
