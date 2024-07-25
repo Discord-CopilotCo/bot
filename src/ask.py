@@ -1,5 +1,6 @@
 @client.slash_command(description="Ask copilot a question", dm_permission=True)
 async def ask(interaction: nextcord.Interaction, prompt: str):
+    await interaction.response.defer()
     cookies = json.loads(
         open(f"{Path.cwd()}/bing_cookies.json", encoding="utf-8").read()
     )
@@ -27,10 +28,10 @@ async def ask(interaction: nextcord.Interaction, prompt: str):
         except:
             pass
         split = wrap(str(actualtext), 1999)
-        interaction.send(split[0])
+        interaction.followup.send(split[0])
     elif len(actualtext) < 1999:
         actualtext = re.sub("\[\^\d\^\]", "", actualtext)
-        await interaction.send(actualtext)
+        await interaction.followup.send(actualtext)
     if re.search(r"ll ?try ?to ?create ?that", parsed_done["text"]):
         piccookie = ""
         for cookie in cookies:
@@ -50,7 +51,7 @@ async def ask(interaction: nextcord.Interaction, prompt: str):
                 )
         embed = nextcord.Embed()
         embed.set_image(url="attachment://image.jpeg")
-        await interaction.send(
+        await interaction.followup.send(
             files=images, embed=embed
         )
         for image in os.listdir("images"):
