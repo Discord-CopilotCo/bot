@@ -1,5 +1,5 @@
 @client.slash_command(description="Set this channel for the bot to talk here :)")
-async def chathere(interaction: discord.Interaction):
+async def chathere(interaction: nextcord.Interaction):
     if interaction.user.guild_permissions.manage_guild:
         global channels
         if interaction.channel.id not in channels:  

@@ -7,14 +7,16 @@ import json
 import re
 import os
 from pathlib import Path
-import nextcord as discord
+import nextcord
+from nextcord import app_commands
 from nextcord.ext import *
 from re_edge_gpt import Chatbot, ConversationStyle, ImageGen
 from dotenv import load_dotenv
+from textwrap import wrap
 
-intents = discord.Intents.default()
+intents = nextcord.Intents.default()
 intents.message_content = True
-client = discord.Client(intents=intents)
+client = nextcord.Client(intents=intents)
 chats = 0
 bugreports = 0
 load_dotenv()
@@ -22,7 +24,6 @@ chat_log = float(chats)
 channels = []
 staff = []
 owner = os.getenv("BOT_OWNER")
-
 
 def updatechannelsjson():
     with open("channels.json", "w", encoding="utf-8") as channelsfile:

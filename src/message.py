@@ -1,11 +1,10 @@
-from textwrap import wrap
 @client.event
 async def on_message(message):
     if message.content.startswith("cp!stats"):
         if message.author.id in staff:
             global chat_log
             global bugreports
-            embed = discord.Embed(
+            embed = nextcord.Embed(
                 title="Copilot's statistics",
                 description="Thank you for being a staff member!",
                 color=0x00FF00,
@@ -89,9 +88,9 @@ async def on_message(message):
                                 img = f = os.path.join("images", image)
                                 if os.path.isfile(img):
                                     images.append(
-                                        discord.File(img, filename="image.jpeg")
+                                        nextcord.File(img, filename="image.jpeg")
                                     )
-                            embed = discord.Embed()
+                            embed = nextcord.Embed()
                             embed.set_image(url="attachment://image.jpeg")
                             await message.channel.send(
                                 files=images, embed=embed, reference=message
